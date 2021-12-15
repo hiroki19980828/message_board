@@ -1,0 +1,41 @@
+package models;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MessageValidator {
+    //バリデーションを実行する
+    public static List<String> validate(Message m) {
+        List<String> errors = new ArrayList<String>();
+
+        String title_error = validateTitle(m.getTitle());
+        if (!title_error.equals("")) {
+            errors.add(title_error);
+        }
+
+        String countent_error = validateContent(m.getContent());
+        if (!countent_error.equals("")) {
+            errors.add(countent_error);
+        }
+        return errors;
+    }
+
+    // タイトルの必須入力チェック
+    private static String validateTitle(String title) {
+        if (title == null || title.equals("")) {
+            return "タイトルを入力してください。";
+        }
+
+        return "";
+    }
+
+    // メッセージの必須入力チェック
+    private static String validateContent(String content) {
+        if (content == null || content.equals("")) {
+            return "メッセージを入力してください。";
+        }
+
+        return "";
+
+    }
+}
